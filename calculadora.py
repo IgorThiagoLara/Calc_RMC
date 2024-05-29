@@ -41,6 +41,42 @@ def menu_matrizes():
     escolha2=int(input("Escolha uma das opções acima\n"))
     return escolha2
 
+# 1. SUBCONJUNTO
+def verificar_subconjunto(A, B):
+    if A.issubset(B) and A != B:
+        print("A é subconjunto próprio de B")
+    else:
+        print("A não é subconjunto próprio de B")
+
+def realizar_uniao(A, B):
+    uniao = A.union(B)
+    print("União de A e B:", uniao)
+
+def calcular_intersecao(A, B):
+    intersecao = A.intersection(B)
+    print("Interseção de A e B:", intersecao)
+
+def calcular_diferenca(A, B):
+    diferenca = A.difference(B)
+    print("Diferença de A - B:", diferenca)
+
+
+
+def gerarMatriz(nlinhas, nColunas):
+    matriz=[]
+    for i in range(0, nlinhas):
+        linha= []
+        for j in range(0, nColunas):
+            elemento = int(input(f"Informe  Matriz: linha {i} e coluna {j}\n"))
+            linha.append(elemento)
+        matriz.append(linha)
+    return matriz
+
+def imprimirMatriz(matriz):
+    for linha in matriz:
+        print(linha)
+
+
 def execucao_menu():
     while True:
         escolha=menu_principal()
@@ -49,6 +85,8 @@ def execucao_menu():
             print("Saindo do programa...")
             break
         if escolha==1:
+            A = set(map(int, input("Digite os elementos do conjunto A separados por espaço: ").split()))
+            B = set(map(int, input("Digite os elementos do conjunto B separados por espaço: ").split()))
             while True:
                 escolha2=menu_conjuntos()
                 if escolha2==0:
@@ -58,15 +96,20 @@ def execucao_menu():
                 if escolha2==1:
                     pausa(1)
                     print("Verificar se o subconjunto a é subconjunto próprio de b(A ∈ B)")
+                    verificar_subconjunto(A, B)
                 elif escolha2 == 2:
                     pausa(1)
                     print("Realizar operação de união(A ∪ B)")
+                    realizar_uniao(A, B)
                 elif escolha2 == 3:
                     pausa(1)
                     print("Calcular intersecção(A ∩ B)")
+                    calcular_intersecao(A, B)
                 elif escolha2 == 4:
                     pausa(1)
                     print("Calcular diferença(A - B)")
+                    calcular_diferenca(A, B)
+
 
         elif escolha == 2:
             while True:
@@ -88,6 +131,7 @@ def execucao_menu():
                     pausa(1)
                     print("Gerar gráfico")
 
+
         elif escolha == 3:
             while True:
                 escolha2 = menu_funcao_exponencial()
@@ -107,7 +151,11 @@ def execucao_menu():
                     print("Gerar gráfico")
 
         elif escolha == 4:
-            while True:
+            linhas= int(input("Informe o número de linhas "))
+            colunas= int(input("Informe o número de colunas "))
+            matriz=gerarMatriz(linhas, colunas)
+            imprimirMatriz(matriz)
+            while True: 
                 escolha2 = menu_matrizes()
                 if escolha2 == 0:
                     pausa(1)
@@ -115,7 +163,7 @@ def execucao_menu():
                     break
                 elif escolha2 == 1:
                     pausa(1)
-                    print("Verificar se é matriz quadrada")
+                    print("Verificar se é determinante")
                 elif escolha2 == 2:
                     pausa(1)
                     print("Multiplicação")
@@ -123,4 +171,3 @@ def execucao_menu():
                     pausa(1)
                     print("Matriz transposta")
 execucao_menu()
-
