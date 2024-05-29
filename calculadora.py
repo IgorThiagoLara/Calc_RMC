@@ -108,7 +108,10 @@ def execucao_menu():
                 elif escolha2 == 4:
                     pausa(1)
                     print("Calcular diferença(A - B)")
-                    calcular_diferenca(A, B)
+                    if len(B) > len(A):
+                        print("Erro: O conjunto B é maior que o conjunto A.")
+                    else:
+                        calcular_diferenca(A, B)
 
 
         elif escolha == 2:
