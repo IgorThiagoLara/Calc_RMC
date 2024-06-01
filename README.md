@@ -1,0 +1,1 @@
+O repositório se trata do desenvolvimento em python de uma calculadora simples e que não possuí interface gráfica. Ela realiza operações como: operações com conjuntos, funções de segundo grau, funções exponenciais e matrizes.
